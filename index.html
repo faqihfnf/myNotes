@@ -29,15 +29,18 @@
     <div class="wrapper">
         <li class="add-box">
             <div class="icon"><i class="uil uil-plus-circle"></i></div>
-            <p>Add New Note</p>
+            <!-- <p>Add New Note</p> -->
         </li>
     </div>
 
+    <!--? Memu Pop Up  -->
     <div class="popup-box">
         <div class="popup">
             <div class="content">
                 <header>
-                    <p>Add New Note</p>
+                    <div>
+                        <p>Add New Note</p>
+                    </div>
                     <i class="uil uil-times"></i>
                 </header>
                 <form action="#">
@@ -49,6 +52,13 @@
                         <label>Description</label>
                         <textarea rows="6" cols="30"></textarea>
                     </div>
+
+                    <div id="color-container" class="color-container-default">
+                        <div id="color-picker" class="color-picker">
+                            <input type="color" id="note-color" class="color-input" value="#ffea00">
+                        </div>
+                    </div>
+
                     <button>Add Note</button>
                 </form>
             </div>

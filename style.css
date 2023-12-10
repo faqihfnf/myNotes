@@ -19,10 +19,12 @@
 h1 {
   font-size: 30px;
   font-family: "Lobster", cursive;
+  transition: 1s ease;
 }
 
 body {
   background: rgb(75, 183, 205);
+  transition: background-color 1s ease;
 }
 
 .wrapper {
@@ -40,7 +42,7 @@ body {
 .wrapper li {
   height: 250px;
   list-style: none;
-  background: yellowgreen; /* warna untuk body notes */
+  background: aliceblue; /* warna untuk body notes */
   border-radius: 5px;
   padding: 10px;
 }
@@ -65,7 +67,11 @@ header {
 .add-box {
   flex-direction: column;
   justify-content: center;
+}
+
+.icon {
   cursor: pointer;
+  transition: 1s ease;
 }
 
 .add-box .icon {
@@ -98,6 +104,7 @@ header {
 .details p {
   font-size: 14px;
   margin: 2px;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .note p {
@@ -124,16 +131,22 @@ header {
 .bottom-content span {
   color: black !important;
   font-size: 14px;
+  padding-top: 5px;
 }
 
 .bottom-content .settings i {
-  color: blueviolet;
+  color: midnightblue;
   font-size: 15px;
   cursor: pointer;
 }
 
+.bottom-content .settings i:hover {
+  color: rgb(5, 5, 79) !important;
+}
+
 .settings {
   position: relative;
+  padding-top: 8px;
 }
 
 .settings .menu {
@@ -141,7 +154,7 @@ header {
   bottom: 0;
   right: -5px;
   padding: 5px 0;
-  background: yellowgreen;
+  background: aliceblue !important;
   border-radius: 4px;
   transform: scale(0);
   transform-origin: bottom right; /* posisi keluarnya menu edit dan delete ketika di hover*/
@@ -225,7 +238,7 @@ header {
 }
 
 .content header i {
-  color: blueviolet;
+  color: midnightblue;
   cursor: pointer;
   font-size: 23px;
 }
@@ -268,7 +281,12 @@ form .row label {
   color: aliceblue;
   font-size: 17px;
   border-radius: 4px;
-  background-color: cornflowerblue;
+  background-color: midnightblue;
+  cursor: pointer;
+}
+
+.content form button:hover {
+  background-color: rgb(3, 3, 120) !important;
 }
 
 .note-text {
@@ -283,19 +301,90 @@ form .row label {
   outline: none !important;
 }
 
-/* Dark mode */
+/*? Dark mode */
+
+#toggle {
+  cursor: pointer !important;
+  transition: 1s ease;
+}
+
 body.dark {
   background-color: rgb(16, 9, 36);
+  transition: background-color 1s ease;
 }
 
 body.dark h1 {
   color: aliceblue;
+  transition: 1s ease;
 }
 
 body.dark .uil-moon {
   color: aliceblue;
+  transition: 1s ease;
 }
 
 body.dark .icon {
   color: aliceblue;
+  transition: 1s ease;
+}
+
+.dark .popup .content {
+  width: calc(100% - 15px);
+  background: midnightblue;
+  border-radius: 5px;
+  color: aliceblue;
+}
+
+.dark .content header i {
+  color: aliceblue;
+  cursor: pointer;
+  font-size: 23px;
+}
+
+.dark .content form button {
+  background-color: aquamarine;
+  color: midnightblue;
+  cursor: pointer;
+}
+
+/*? CSS untuk elemen div sebagai ganti input color */
+.color-container {
+  display: inline-block;
+  position: relative;
+  /* margin-top: 15px; */
+}
+
+.color-picker {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  /* border: 2px solid #000; */
+  background: yellow;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-bottom: 15px;
+  /* top: 0; */
+  /* left: 0; */
+}
+
+/* Gaya tambahan saat div dihover */
+.color-picker:hover {
+  border-color: #333333;
+}
+
+/* Gaya untuk menyembunyikan input color */
+.color-input {
+  width: 30px;
+  height: 30px;
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}
+
+.color-container.default {
+  background-color: #ffc107; /* Warna kuning */
 }

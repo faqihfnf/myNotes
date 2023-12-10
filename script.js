@@ -15,6 +15,8 @@ let isUpdate = false,
 //* function untuk membuka popup
 addBox.addEventListener("click", () => {
   titleTag.focus();
+  const selectedColor = document.getElementById("note-color").value; //! tambahan
+  // popupBox.style.backgroundColor = selectedColor; //! tambahan
   popupBox.classList.add("show");
 });
 
@@ -31,7 +33,7 @@ closeIcon.addEventListener("click", () => {
 function showNotes() {
   document.querySelectorAll(".note").forEach((note) => note.remove());
   notes.forEach((note, index) => {
-    let liTag = `<li class="note">
+    let liTag = `<li class="note" style="background-color: ${note.color || "#ffffff"};">
             <div class="details">
                 <p>${note.title}</p>
                 <textarea class="note-text" rows="8" cols="40" readonly>${note.description ? decodeURIComponent(note.description) : ""}</textarea>
@@ -89,6 +91,7 @@ addBtn.addEventListener("click", (e) => {
   e.preventDefault();
   let noteTitle = titleTag.value,
     noteDesc = descTag.value;
+  const selectedColor = document.getElementById("note-color").value; //! tambahan
 
   if (noteTitle || noteDesc) {
     //? mendapatkan tanggal realtime
@@ -101,6 +104,7 @@ addBtn.addEventListener("click", (e) => {
       title: noteTitle,
       description: noteDesc,
       date: `${day} ${month} ${year}`,
+      color: selectedColor, //! tambahan
     };
 
     if (!isUpdate) {
@@ -144,3 +148,24 @@ toggleBtn.onclick = (e) => {
     disableDarkMode();
   }
 };
+
+// JavaScript untuk menangani perubahan warna pada div color-picker
+// JavaScript untuk menangani perubahan warna pada div color-picker
+const colorContainer = document.getElementById("color-container");
+const colorPicker = document.getElementById("color-picker");
+const colorInput = document.getElementById("note-color");
+
+// Menangani penempatan color picker saat color container diklik
+colorContainer.addEventListener("click", () => {
+  colorInput.click();
+});
+
+colorInput.addEventListener("input", (e) => {
+  const selectedColor = e.target.value;
+  colorPicker.style.backgroundColor = selectedColor;
+});
+
+// Menetapkan warna default kuning pada color picker saat halaman dimuat
+document.addEventListener("DOMContentLoaded", () => {
+  colorPicker.style.backgroundColor = "#ffea00";
+});
